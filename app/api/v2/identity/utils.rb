@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+require 'ipinfo'
+
 module API::V2
   module Identity
     module Utils
@@ -112,11 +115,30 @@ module API::V2
         )
       end
 
+      def user_timezone(user_ip:, key:)
+        access_token = Barong::App.config.ipinfo_token
+        handler = IPinfo::create(access_token)
+        return nil unless handler
+
+        details = handler.details(user_ip)
+        return nil unless details
+
+        case key.to_sym
+        when :country
+          "#{details.city}, #{details.country_name}"
+        when :timezone
+          user_time = Time.now.in_time_zone(details.timezone)
+          "#{user_time.strftime('%H:%M:%S %Z')} #{user_time.formatted_offset} #{user_time.strftime('%Y-%m-%d')}"
+        end
+      end
+
       def publish_session_create(user)
         EventAPI.notify('system.session.create',
                         record: {
                           user: user.as_json_for_event_api,
                           user_ip: remote_ip,
+                          user_ip_country: user_timezone(ip: remote_ip, key: :country),
+                          user_ip_timezone: user_timezone(ip: remote_ip, key: :timezone),
                           user_agent: request.env['HTTP_USER_AGENT']
                         })
       end

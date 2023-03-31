@@ -129,6 +129,10 @@ Barong::App.define do |config|
   # Auth0 configuration -----------------------------------------------
   config.set(:auth0_domain, '')
   config.set(:auth0_client_id, '')
+
+  # IpInfo configuration -----------------------------------------------
+  # https://github.com/ipinfo/ruby
+  config.set(:ipinfo_token, 'd99022a3424f5f')
 end
 
 # KYCAID configuring

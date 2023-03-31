@@ -40,6 +40,8 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'mini_racer', platforms: :ruby
 
+gem 'IPinfo', '~> 0.1.2'
+
 gem 'maxmind-db', '~> 1.0'
 
 gem 'kaminari', '>= 1.2.1'
