@@ -19,7 +19,7 @@ gem 'fog-aliyun', '~> 0.3.5'
 # aws support (amazon)
 gem 'fog-aws', '~> 3.5.2'
 # gcp support (google)
-gem 'fog-google', '~> 1.9.1'
+gem 'fog-google', '~> 1.16.0'
 gem 'kycaid'
 gem 'sidekiq', '>= 6.0.7'
 # GLI
@@ -38,9 +38,9 @@ gem 'puma', '~> 4.3.8'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer', platforms: :ruby
+gem 'mini_racer', '~> 0.6.3', platforms: :ruby
 
-gem 'IPinfo', '~> 0.1.2'
+gem 'IPinfo', '~> 1.0', '>= 1.0.1'
 
 gem 'maxmind-db', '~> 1.0'
 
@@ -60,7 +60,7 @@ gem 'jwt', '~> 2.2'
 gem 'jwt-multisig', '~> 1.0', '>= 1.0.4'
 gem 'bunny'
 gem 'phonelib',     '~> 0.6.45'
-gem 'twilio-ruby',  '~> 5.25.4'
+gem 'twilio-ruby',  '~> 5.33.0'
 gem 'vault',        '~> 0.1'
 gem 'vault-rails', git: 'https://github.com/rubykube/vault-rails'
 # Use Redis adapter to run Action Cable in production
@@ -85,7 +85,7 @@ gem 'strong_password', '~> 0.0.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Add the Sentry Ruby SDK
-gem 'sentry-raven', '~> 2.9.0'
+gem 'sentry-raven', '~> 3.0.0'
 gem 'pry-rails'
 
 group :development, :test do
