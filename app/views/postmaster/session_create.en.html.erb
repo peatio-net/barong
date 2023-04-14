@@ -30,6 +30,13 @@
                     <p>IP Address: <%= @record.user_ip %></p>
                     <p>User-agent: <%= @record.user_agent %></p>
 
+                    <% if @record.user_ip_country %>
+                      <p>Location: <%= @record.user_ip_country %></p>
+                    <% end %>
+                    <% if @record.user_ip_timezone %>
+                      <p>Date/Time: <%= @record.user_ip_timezone %></p>
+                    <% end %>
+
                     <p>If this was you, please disregard this email.</p>
 
                     <p>If this wasn't you, please change your passwords immediately, as someone else may be accessing your account.</p>

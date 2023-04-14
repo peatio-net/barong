@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+require 'geocoder'
+
 module API::V2
   module Identity
     module Utils
@@ -112,11 +115,32 @@ module API::V2
         )
       end
 
+      def user_timezone(user_ip:, key:)
+        api_token = Barong::App.config.geocoder_lookup_api_token
+        service = Barong::App.config.geocoder_lookup_service.to_sym
+
+        Geocoder.configure(ip_lookup: service, api_key: api_token)
+
+        results = Geocoder.search(user_ip)
+        return nil if results.empty? || results.nil?
+
+        case key.to_sym
+        when :country
+          country = Barong::GeoIP.info(ip: user_ip, key: :country)
+          "#{results.first.city}, #{country}"
+        when :timezone
+          user_time = Time.now.in_time_zone(results.first.data['timezone'])
+          "#{user_time.strftime('%H:%M:%S %Z')} #{user_time.formatted_offset} #{user_time.strftime('%Y-%m-%d')}"
+        end
+      end
+
       def publish_session_create(user)
         EventAPI.notify('system.session.create',
                         record: {
                           user: user.as_json_for_event_api,
                           user_ip: remote_ip,
+                          user_ip_country: user_timezone(ip: remote_ip, key: :country),
+                          user_ip_timezone: user_timezone(ip: remote_ip, key: :timezone),
                           user_agent: request.env['HTTP_USER_AGENT']
                         })
       end
