@@ -42,6 +42,8 @@ gem 'mini_racer', '~> 0.6.3', platforms: :ruby
 
 gem 'IPinfo', '~> 1.0', '>= 1.0.1'
 
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+
 gem 'maxmind-db', '~> 1.0'
 
 gem 'kaminari', '>= 1.2.1'

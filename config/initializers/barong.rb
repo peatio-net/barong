@@ -130,9 +130,10 @@ Barong::App.define do |config|
   config.set(:auth0_domain, '')
   config.set(:auth0_client_id, '')
 
-  # IpInfo configuration -----------------------------------------------
-  # https://github.com/ipinfo/ruby
-  config.set(:ipinfo_token, 'd99022a3424f5f')
+  # Geocoder configuration -----------------------------------------------
+  # https://github.com/alexreisner/geocoder
+  config.set(:geocoder_lookup_service, 'ipinfo_io')
+  config.set(:geocoder_lookup_api_token, 'd99022a3424f5f')
 end
 
 # KYCAID configuring
