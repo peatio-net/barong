@@ -15,6 +15,6 @@ describe API::V2::Entities::Activity do
   it { expect(subject.action).to eq record.action }
   it { expect(subject.data).to eq record.data }
   it { expect(subject.user_agent).to eq record.user_agent }
-
+  it { expect(subject.user_ip_country).to eq record.user_ip_country }
   it { expect(subject.created_at).to eq record.created_at.iso8601 }
 end
