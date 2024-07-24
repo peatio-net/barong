@@ -17,7 +17,7 @@ gem 'fog-core', '~> 2.1.0'
 # alicloud support
 gem 'fog-aliyun', '~> 0.3.5'
 # aws support (amazon)
-gem 'fog-aws', '~> 3.5.2'
+gem 'fog-aws', '~> 3.24.0'
 # gcp support (google)
 gem 'fog-google', '~> 1.9.1'
 gem 'kycaid'
