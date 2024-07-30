@@ -4,8 +4,8 @@ require 'vault/rails'
 
 Vault::Rails.configure do |config|
   config.enabled = Rails.env.production?
-  config.address = Barong::App.config.vault_address
-  config.token = Barong::App.config.vault_token
+  config.address = ENV.fetch('BARONG_VAULT_ADDR', 'http://vault:8200')
+  config.token = ENV['BARONG_VAULT_TOKEN']
   config.ssl_verify = false
   config.timeout = 60
   config.application = Barong::App.config.vault_app_name
