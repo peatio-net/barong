@@ -156,6 +156,7 @@ class EventMailer
     @bunny_channel.ack(delivery_info.delivery_tag)
   rescue StandardError => e
     Rails.logger.error { e.inspect }
+    Rails.logger.error { e.backtrace.inspect }
 
     if e.is_a?(JWT::ExpiredSignature) || e.is_a?(JWT::VerificationError) || e.is_a?(VerificationError)
       # Acknowledges a message

@@ -33,6 +33,7 @@ CarrierWave.configure do |config|
     }
     config.fog_directory = Barong::App.config.storage_bucket_name
   elsif 'AWS'.casecmp?(Barong::App.config.storage_provider)
+    config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',
       aws_signature_version: Barong::App.config.storage_signature_version,
