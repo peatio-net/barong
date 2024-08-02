@@ -10,7 +10,7 @@ class Postmaster < ApplicationMailer
     @logo    = params[:logo]
 
     sender = "#{Barong::App.config.sender_name} <#{Barong::App.config.sender_email}>"
-
+    Rails.logger.info { "record: #{@record} \n  changes: #{@changes}" }
     email_options = {
       subject: params[:subject],
       template_name: params[:template_name],
