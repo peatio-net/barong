@@ -149,8 +149,8 @@ class EventMailer
       user: user
     }
 
+    Rails.logger.info { "Params email:  #{params}" }
     Postmaster.process_payload(params).deliver_now
-
     # Acknowledges a message
     # Acknowledged message is completely removed from the queue
     @bunny_channel.ack(delivery_info.delivery_tag)
