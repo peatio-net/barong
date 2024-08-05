@@ -171,6 +171,7 @@ class EventMailer
   end
 
   def verify_jwt(payload, signer)
+    Rails.logger.info { "payload : #{payload}, signer: #{signer}" }
     options = algorithm_verification_options(signer)
     JWT::Multisig.verify_jwt JSON.parse(payload), { signer => jwt_public_key(signer) },
                              options.compact
