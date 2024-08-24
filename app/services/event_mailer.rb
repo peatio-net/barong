@@ -98,6 +98,7 @@ class EventMailer
   end
 
   def handle_message(delivery_info, _metadata, payload)
+    logger =  ActiveSupport::Logger.new(Rails.root.join('log', 'barong_event_mailer.log'))
     Rails.logger.info { "Start handling a message" }
     Rails.logger.info { "\nPayload: \n #{payload} \n\n Metadata: \n #{_metadata} \n\n Delivery info: \n #{delivery_info} \n" }
     exchange = @exchanges.select { |_, ex| ex[:name] == delivery_info[:exchange] }
@@ -111,7 +112,8 @@ class EventMailer
 
     exchange_id = exchange.keys.first.to_s
     signer      = exchange[exchange_id.to_sym][:signer]
-
+    logger.info "exchanges: #{@exchanges}, keychain: #{@keychain}, #{@events}"
+    logger.info "payload: #{payload}, signer: #{signer}"
     result = verify_jwt(payload, signer.to_sym)
 
     raise VerificationError, "Failed to verify signature from #{signer}." \
@@ -148,8 +150,8 @@ class EventMailer
       changes: obj.changes,
       user: user
     }
+    logger.info "params: #{params}"
 
-    Rails.logger.info { "Params email:  #{params}" }
     Postmaster.process_payload(params).deliver_now
     # Acknowledges a message
     # Acknowledged message is completely removed from the queue
@@ -171,7 +173,6 @@ class EventMailer
   end
 
   def verify_jwt(payload, signer)
-    Rails.logger.info { "payload : #{payload}, signer: #{signer}" }
     options = algorithm_verification_options(signer)
     JWT::Multisig.verify_jwt JSON.parse(payload), { signer => jwt_public_key(signer) },
                              options.compact
