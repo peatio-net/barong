@@ -118,7 +118,7 @@ module API::V2
                           user: user.as_json_for_event_api,
                           user_ip: remote_ip,
                           user_agent: request.env['HTTP_USER_AGENT'],
-                          created_at: Time.current
+                          user_ip_country: Barong::GeoIP.info(ip: remote_ip, key: :country)
                         })
       end
     end
