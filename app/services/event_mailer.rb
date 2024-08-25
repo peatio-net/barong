@@ -150,7 +150,6 @@ class EventMailer
       changes: obj.changes,
       user: user
     }
-    logger.info "params: #{params}"
 
     Postmaster.process_payload(params).deliver_now
     # Acknowledges a message
