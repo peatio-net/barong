@@ -7,7 +7,7 @@ module API::V2
     class Sessions < Grape::API
       helpers do
         def get_user(email)
-          user = User.find_by(email: email)
+          user = User.find_by(email: email) || User.find_by(uid: email) || User.find_by(username: email)
           error!({ errors: ['identity.session.invalid_params'] }, 401) unless user
 
           if user.state == 'banned'
