@@ -64,7 +64,9 @@ module API::V2
                          action: 'login', result: 'failed', error_text: 'invalid_params')
           end
 
-          unless user.otp
+          mobile_login = request.headers['Mobile-App']
+
+          unless user.otp || mobile_login
             activity_record(user: user.id, action: 'login', result: 'succeed', topic: 'session')
             csrf_token = open_session(user)
             publish_session_create(user)
