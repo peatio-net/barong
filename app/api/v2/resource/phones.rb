@@ -11,7 +11,7 @@ module API::V2
       helpers do
         def validate_phone!(phone_number)
           phone_number = Phone.international(phone_number)
-
+          Rails.logger.warn "validate_phone : #{phone_number}"
           error!({ errors: ['resource.phone.invalid_num'] }, 400) \
             unless Phone.valid?(phone_number)
 
@@ -92,8 +92,12 @@ module API::V2
           declared_params = declared(params)
           validate_phone!(declared_params[:phone_number])
 
+          Rails.logger.warn "send_code declared_params: #{declared_params}"
+
           phone_number = Phone.international(declared_params[:phone_number])
           phone = current_user.phones.find_by_number(phone_number)
+
+          Rails.logger.warn "send_code phone_number: #{phone_number}"
 
           error!({ errors: ['resource.phone.doesnt_exist'] }, 404) unless phone
 
@@ -131,8 +135,10 @@ module API::V2
         post '/verify' do
           declared_params = declared(params)
           validate_phone!(declared_params[:phone_number])
+          Rails.logger.warn "verify declared_params: #{declared_params}"
 
           phone_number = Phone.international(declared_params[:phone_number])
+          Rails.logger.warn "verify phone_number: #{phone_number}"
           phone = current_user.phones.find_by_number(phone_number)
           error!({ errors: ['resource.phone.doesnt_exist'] }, 404) unless phone
 
