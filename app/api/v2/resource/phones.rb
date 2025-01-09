@@ -135,7 +135,7 @@ module API::V2
         post '/verify' do
           declared_params = declared(params)
           validate_phone!(declared_params[:phone_number])
-          Rails.logger.warn "verify declared_params: #{declared_params}"
+          Rails.logger.warn "user id : #{current_user.id} , verify declared_params: #{declared_params}"
 
           phone_number = Phone.international(declared_params[:phone_number])
           Rails.logger.warn "verify phone_number: #{phone_number}"
