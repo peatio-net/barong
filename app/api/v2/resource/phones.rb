@@ -61,7 +61,7 @@ module API::V2
             current_user.update(state: 'banned')
             error!({ errors: ['resource.phone.too_many_unverified'] }, 400)
           end
-
+          phone_number = Phone.sanitize(phone_number)
           phone = current_user.phones.create(number: phone_number)
           code_error!(phone.errors.details, 422) if phone.errors.any?
 
