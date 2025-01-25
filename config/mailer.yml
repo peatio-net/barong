@@ -91,6 +91,14 @@ events:
         subject: New Beneficiary
         template_path: new_beneficiary.en.html.erb
 
+  - name: Internal Transfer
+    key: internal_transfer.created
+    exchange: peatio
+    templates:
+      en:
+        subject: Internal Transfer
+        template_path: new_internal_transfer.en.html.erb
+
   # expression example
   # - name: Session Create
   #   key: session.create
