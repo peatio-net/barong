@@ -1,0 +1,21 @@
+<table class="module" style="table-layout: fixed;" role="module" border="0" width="100%" cellspacing="0" cellpadding="0"
+    data-type="text">
+    <tbody>
+        <tr>
+            <td style="padding: 0px 0px 0px 10px;">
+                <p style="font-size: 16px; font-weight: 400; padding: 0 0 30px;">An internal transfer has just been created. with the following Details:</p>
+
+                <ul>
+                    <li style="font-size: 16px; font-weight: 400;">To: <%= @record.internal_transfer_sender %></span></li>
+                    <li style="font-size: 16px; font-weight: 400;">From: <%= @record.internal_transfer_receiver %>
+                    </li>
+                    <li style="font-size: 16px; font-weight: 400;">Currency: <span
+                            style="font-weight: 500; text-transform: uppercase;">
+                            <%= @record.currency_name %>
+                        </span></li>
+                    <li style="font-size: 16px; font-weight: 400;">Amount: <%= @record.amount %></span></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
