@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 2.7.4'
+ruby '~> 3.3.0'
 
 gem 'aliyun-sdk',  '~> 0.7.0'
 gem 'api-pagination', '~> 4.8.2'
@@ -19,7 +19,7 @@ gem 'fog-aliyun', '~> 0.3.5'
 # aws support (amazon)
 gem 'fog-aws', '~> 3.24.0'
 # gcp support (google)
-gem 'fog-google', '~> 1.9.1'
+gem 'fog-google', '~> 1.20.0'
 gem 'kycaid'
 gem 'sidekiq', '>= 6.0.7'
 # GLI
@@ -32,6 +32,7 @@ gem 'hiredis', '~> 0.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use mysql as the database for Active Record
+# gem 'mysql2', '~> 0.'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.8'
