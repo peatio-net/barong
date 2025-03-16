@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 module API
   module V2
     module Validations
 
-      class AllowBlankValidator < Grape::Validations::AllowBlankValidator
+      class AllowBlankValidator < Grape::Validations::Base
         # Default exception is costructed from `@api` class name.
         # E.g
         # @api.base.name  => API::V2::Account::Withdraws

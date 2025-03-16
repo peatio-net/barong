@@ -81,7 +81,7 @@ class Rack::Attack
   # If you want to return 503 so that the attacker might be fooled into
   # believing that they've successfully broken your app (or you just want to
   # customize the response), then uncomment these lines.
-  self.throttled_response = lambda do |_env|
+  self.throttled_responder = lambda do |_env|
     headers = {
       'Content-Type' => 'text/plain'
     }

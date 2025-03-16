@@ -1,3 +1,4 @@
+require_relative 'v2/base'
 module API
   class Base < Grape::API
     PREFIX = '/api'
