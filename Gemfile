@@ -11,7 +11,7 @@ gem 'env-tweaks', '~> 1.0.0'
 gem 'ed25519', '~> 1.2.4'
 
 # storage related gems
-gem 'carrierwave', '~> 2.1', '>= 2.1.0'
+gem 'carrierwave', '~> 3.1', '>= 3.1.1'
 # fog's core, shared behaviors without API and provider specifics
 gem 'fog-core', '~> 2.1.0'
 # alicloud support
@@ -30,7 +30,8 @@ gem 'cancancan', '~> 2.3.0'
 
 gem 'hiredis', '~> 0.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+gem 'rails', '~> 6.0.1'
+# gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -46,12 +47,12 @@ gem 'maxmind-db', '~> 1.0'
 gem 'kaminari', '>= 1.2.1'
 gem 'peatio', '~> 0.4.4'
 gem 'rack-cors', '~> 1.0.2'
-gem 'rack-attack', '>= 6.5.0'
+gem 'rack-attack', '>= 6.7.0'
 
 # REST-like API framework for Ruby
-gem 'grape', '~> 1.4'
-gem 'grape-entity', '~> 0.8'
-gem 'grape-swagger', '~> 1.2'
+gem 'grape', '~> 2.3'
+gem 'grape-entity', '~> 1.0', '>= 1.0.1'
+gem 'grape-swagger', '~> 2.1', '>= 2.1.2'
 gem 'grape-swagger-entity', '~> 0.5'
 gem 'grape_logging', '~> 1.8'
 gem 'memoist', '~> 0.16'
