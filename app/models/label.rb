@@ -70,9 +70,9 @@ class Label < ApplicationRecord
   # TODO: Fix it when EventAPI will be added.
   def send_document_review_notification
     if value == 'verified'
-      EventAPI.notify('system.document.verified', record: as_json_for_event_api)
+      Barong::EventAPI.notify('system.document.verified', record: as_json_for_event_api)
     elsif value == 'rejected'
-      EventAPI.notify('system.document.rejected', record: as_json_for_event_api)
+      Barong::EventAPI.notify('system.document.rejected', record: as_json_for_event_api)
     end
   end
 end

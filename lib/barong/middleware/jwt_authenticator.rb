@@ -3,7 +3,7 @@
 module Barong
   module Middleware
     # Authenticate a user by a bearer token
-    class JWTAuthenticator < Grape::Middleware::Base
+    class JwtAuthenticator < Grape::Middleware::Base
       def initialize(app, options)
         super(app, options)
         raise(Peatio::Auth::Error, 'Public key missing') unless options[:pubkey]

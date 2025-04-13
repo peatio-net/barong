@@ -2,7 +2,7 @@
 
 module Barong
 # MaxmindDB reader adapter
-  module GeoIP
+  module GeoIp
     class << self
       attr_accessor :lang
 

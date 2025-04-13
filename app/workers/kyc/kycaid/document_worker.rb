@@ -1,6 +1,6 @@
 require 'sidekiq'
 
-module KYC
+module Kyc
   module Kycaid
     class DocumentWorker
       include Sidekiq::Worker

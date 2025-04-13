@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Services
-  module HealthChecker
+# module Services
+  class HealthChecker
     LIVENESS_CHECKS = %i[check_db check_redis check_rabbitmq].freeze
     READINESS_CHECKS = %i[check_db].freeze
 
@@ -53,4 +53,4 @@ module Services
       end
     end
   end
-end
+# end

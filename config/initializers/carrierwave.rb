@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_dependency 'upload_uploader'
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'

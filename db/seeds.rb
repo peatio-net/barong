@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_dependency 'barong/seed'
+require_relative '../lib/barong/seed'
 
 seed = Barong::Seed.new
 seed.seed_levels

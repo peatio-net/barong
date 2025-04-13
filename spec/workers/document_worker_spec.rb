@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'KYC::Kycaid::DocumentWorker' do
+describe 'Kyc::Kycaid::DocumentWorker' do
   before { allow(Barong::App.config).to receive_messages(kyc_provider: 'kycaid') }
 
   include_context 'bearer authentication'
@@ -20,15 +20,15 @@ describe 'KYC::Kycaid::DocumentWorker' do
     before { allow(KYCAID::Document).to receive(:create).and_return(successful_docs_response) }
     before { allow(KYCAID::Verification).to receive(:create).and_return(successful_verification_response) }
 
-    before { allow_any_instance_of(KYC::Kycaid::DocumentWorker).to receive(:document_params).and_return({}) }
-    before { allow_any_instance_of(KYC::Kycaid::DocumentWorker).to receive(:selfie_image_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::DocumentWorker).to receive(:document_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::DocumentWorker).to receive(:selfie_image_params).and_return({}) }
 
     context 'perform' do
       it 'creates a document record' do
         expect(document.metadata).to eq(nil)
         expect(KYCAID::Document).to receive(:create)
 
-        KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
+        Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
         expect(document.reload.metadata).not_to eq(nil)
       end
 
@@ -37,7 +37,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
         expect(KYCAID::Document).to receive(:create)
         expect(KYCAID::Verification).to receive(:create)
 
-        KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
+        Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
         expect(document.reload.metadata).not_to eq(nil)
       end
 
@@ -64,7 +64,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
           expect(document_third.metadata).to eq(nil)
           expect(document_fourth.metadata).to eq(nil)
 
-          KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '91e51f8')
+          Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '91e51f8')
           expect(document_third.reload.metadata).not_to eq(nil)
           expect(document_fourth.reload.metadata).not_to eq(nil)
           expect(user.labels.find_by(key: 'document').value).to eq 'pending'
@@ -74,8 +74,8 @@ describe 'KYC::Kycaid::DocumentWorker' do
   end
 
   describe 'failed verification' do
-    before { allow_any_instance_of(KYC::Kycaid::DocumentWorker).to receive(:document_params).and_return({}) }
-    before { allow_any_instance_of(KYC::Kycaid::DocumentWorker).to receive(:selfie_image_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::DocumentWorker).to receive(:document_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::DocumentWorker).to receive(:selfie_image_params).and_return({}) }
 
     let(:unauthorized_response) { OpenStruct.new(error: { "type": 'unauthorized' }) }
     let(:unsuccessful_response) do
@@ -90,7 +90,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
         expect(KYCAID::Document).to receive(:create)
         expect(KYCAID::Verification).not_to receive(:create)
 
-        KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
+        Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
         expect(document.reload.metadata).to eq(nil)
       end
     end
@@ -102,7 +102,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
         expect(document.metadata).to eq(nil)
         expect(KYCAID::Document).to receive(:create)
 
-        KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
+        Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
         expect(document.metadata).to eq(nil)
       end
 
@@ -113,7 +113,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
 
         expect(KYCAID::Document).to receive(:create)
 
-        KYC::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
+        Kyc::Kycaid::DocumentWorker.new.perform(document.user.id, '84e51f8a06')
         expect(document.metadata).to eq(nil)
         expect(document.user.labels.count).to eq(2)
         expect(document.user.labels.find_by(key: :document).value).to eq('rejected')
@@ -126,7 +126,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
       before { allow(Barong::App.config).to receive(:tls_enabled).and_return(false) }
 
       it 'use http' do
-        params = KYC::Kycaid::AddressWorker.new.verification_params
+        params = Kyc::Kycaid::AddressWorker.new.verification_params
         expect(params.fetch(:callback_url)).to eq('http://openware.com/api/v2/barong/public/kyc')
       end
     end
@@ -135,7 +135,7 @@ describe 'KYC::Kycaid::DocumentWorker' do
       before { allow(Barong::App.config).to receive(:tls_enabled).and_return(true) }
 
       it 'use https' do
-        params = KYC::Kycaid::AddressWorker.new.verification_params
+        params = Kyc::Kycaid::AddressWorker.new.verification_params
         expect(params.fetch(:callback_url)).to eq('https://openware.com/api/v2/barong/public/kyc')
       end
     end

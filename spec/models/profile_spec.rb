@@ -272,13 +272,13 @@ RSpec.describe Profile, type: :model do
     let(:profile_update) { profile.update(first_name: new_name ) }
 
     before do
-      allow(EventAPI).to receive(:notify)
+      allow(Barong::EventAPI).to receive(:notify)
     end
 
     it 'receives event with label create' do
       profile_update
 
-      expect(EventAPI).to have_received(:notify).with('model.profile.updated',
+      expect(Barong::EventAPI).to have_received(:notify).with('model.profile.updated',
                                                       hash_including(
                                                       changes: { first_name: old_name },
                                                       record: hash_including(first_name: new_name)

@@ -18,7 +18,7 @@ class KycService
       return if Barong::App.config.kyc_provider == 'local' ||
         profile.state == 'rejected' || profile.state == 'verified' || profile.state == 'drafted' # not an attempt for verification
 
-      KYC.const_get(Barong::App.config.kyc_provider.capitalize, false)::ApplicantWorker.perform_async(profile.id)
+      Kyc.const_get(Barong::App.config.kyc_provider.capitalize, false)::ApplicantWorker.perform_async(profile.id)
     end
 
     def document_step(document)
@@ -36,7 +36,7 @@ class KycService
 
       document_label_update(user)
 
-      KYC.const_get(Barong::App.config.kyc_provider.capitalize, false)::DocumentWorker.perform_async(user.id, document.identificator) # docs verification worker
+      Kyc.const_get(Barong::App.config.kyc_provider.capitalize, false)::DocumentWorker.perform_async(user.id, document.identificator) # docs verification worker
     end
 
     def address_step(address_params)
@@ -51,13 +51,13 @@ class KycService
 
       return if Barong::App.config.kyc_provider == 'local'
 
-      KYC.const_get(Barong::App.config.kyc_provider.capitalize, false)::AddressWorker.perform_async(address_params.merge(user_id: user.id, identificator: address_params[:identificator]))
+      Kyc.const_get(Barong::App.config.kyc_provider.capitalize, false)::AddressWorker.perform_async(address_params.merge(user_id: user.id, identificator: address_params[:identificator]).transform_keys(&:to_s))
     end
 
     def kycaid_callback(params)
       return 422 if Barong::App.config.kyc_provider == 'local'
 
-      KYC.const_get(Barong::App.config.kyc_provider.capitalize, false)::VerificationsWorker.perform_async(params) # verification worker
+      Kyc.const_get(Barong::App.config.kyc_provider.capitalize, false)::VerificationsWorker.perform_async(params) # verification worker
       200
     end
 

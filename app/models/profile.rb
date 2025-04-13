@@ -79,7 +79,7 @@ class Profile < ApplicationRecord
       user: user.as_json_for_event_api,
       first_name: first_name,
       last_name: last_name,
-      dob: format_iso8601_time(dob),
+      dob: format_iso8601_time(dob&.to_date),
       address: address,
       postcode: postcode,
       city: city,
@@ -124,10 +124,8 @@ class Profile < ApplicationRecord
 
   def dob_not_in_the_future
     return if dob.nil?
-
-    self.dob = dob.to_date
-    return errors.add(:dob, :invalid_format, message: 'invalid date format') unless dob.is_a?(Date)
-    return errors.add(:dob, :invalid, message: 'cant be in future') if dob > Date.current
+    return errors.add(:dob, :invalid_format, message: 'invalid date format') unless dob.to_date.is_a?(Date)
+    return errors.add(:dob, :invalid, message: 'cant be in future') if dob.to_date > Date.current
   end
 end
 

@@ -85,7 +85,7 @@ module APIHelpers
   memoize :management_api_v2_algorithms
 
   def management_api_v2_security_configuration
-    API::V2::Management::JWTAuthenticationMiddleware.security_configuration
+    API::V2::Management::JwtAuthenticationMiddleware.security_configuration
   end
 
   def defaults_for_management_api_v2_security_configuration!
@@ -93,11 +93,11 @@ module APIHelpers
     config[:keychain] = management_api_v2_keychain.each_with_object({}) do |(signer, key), memo|
       memo[signer] = { algorithm: management_api_v2_algorithms.fetch(signer), value: key.public_key }
     end
-    API::V2::Management::JWTAuthenticationMiddleware.security_configuration = config
+    API::V2::Management::JwtAuthenticationMiddleware.security_configuration = config
   end
 
   def codec
-    @_codec ||= Barong::JWT.new(key: Barong::App.config.keystore.private_key)
+    @_codec ||= Barong::Jwt.new(key: Barong::App.config.keystore.private_key)
   end
 
 end

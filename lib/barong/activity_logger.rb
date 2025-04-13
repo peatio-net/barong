@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
 module Barong
-  # admin activities log writer class
   class ActivityLogger
     ACTION = { post: 'create', put: 'update', get: 'read', delete: 'delete', patch: 'update' }.freeze
 
@@ -21,9 +19,9 @@ module Barong
             Rails.logger.error { "Failed to create activity with params: #{params}\n" \
                                  "Inspect error: #{e.inspect}\n#{e.backtrace.join("\n")}" }
 
-            # If system catch Mysql2::Error::ConnectionError
+            # If system catches Mysql2::Error::ConnectionError
             # System will reconnect to DB and push message again to the activities queue
-            if e.is_a? (ActiveRecord::StatementInvalid)
+            if e.is_a?(ActiveRecord::StatementInvalid)
               ActiveRecord::Base.connection.reconnect!
               sleep(0.1)
               @activities.push(options)
@@ -43,7 +41,7 @@ module Barong
         user_id:         params[:user_id],
         target_uid:      target_user(params[:payload]) || '',
         user_ip:         params[:user_ip],
-        user_ip_country: Barong::GeoIP.info(ip: params[:user_ip], key: :country),
+        user_ip_country: Barong::GeoIp.info(ip: params[:user_ip], key: :country),
         user_agent:      params[:user_agent],
         topic:           topic,
         action:          ACTION[params[:verb].downcase.to_sym] || 'system',

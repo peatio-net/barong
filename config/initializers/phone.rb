@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_dependency 'barong/mock_sms'
+require_dependency 'twilio_sms_send_service'
+require_dependency 'mock_phone_verify_service'
 
 Barong::App.define do |config|
   # Twilio configuration ----------------------

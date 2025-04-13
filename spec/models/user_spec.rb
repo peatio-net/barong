@@ -135,7 +135,7 @@ RSpec.describe User, type: :model do
     it { should allow_value('Kal31ewwqXrew').for(:password)}
   end
 
-  let(:uploaded_file) { fixture_file_upload('/files/documents_test.jpg', 'image/jpg') }
+  let(:uploaded_file) { fixture_file_upload('documents_test.jpg', 'image/jpg') }
 
   context 'User with 2 or more documents' do
     it do
@@ -433,13 +433,13 @@ RSpec.describe User, type: :model do
 
     context 'user updated' do
       before do
-        allow(EventAPI).to receive(:notify)
+        allow(Barong::EventAPI).to receive(:notify)
       end
 
       it 'receives event with change info' do
         user.update(level: 2)
 
-        expect(EventAPI).to have_received(:notify).with('model.user.updated',
+        expect(Barong::EventAPI).to have_received(:notify).with('model.user.updated',
                                                         hash_including(
                                                           changes: { level: 0 },
                                                           record: hash_including(uid: user.uid, level: 2, email: user.email)

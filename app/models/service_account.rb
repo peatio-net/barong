@@ -9,7 +9,7 @@ class ServiceAccount < ApplicationRecord
 
   validate :role_exists
   validate :email_n_uid_uniqueness
-  validates :email, email: true, presence: true, uniqueness: true
+  validates :email, email_format: true, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true
 
   scope :active, -> { where(state: 'active') }

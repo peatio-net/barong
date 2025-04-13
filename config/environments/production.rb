@@ -1,8 +1,11 @@
+require "active_support/core_ext/integer/time"
+require "barong/json_log_formatter"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  # config.enable_reloading = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -22,17 +25,10 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+  #  config.asset_host = "http://assets.example.com"
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
@@ -61,7 +57,7 @@ Rails.application.configure do
 
   # Using cache for sessions and permissions forces to use redis cache_store as mandatory store
   # Here we use ENV.fetch instead of Barong::App.config, because environment/* files loads before lib and initializers
-  if ENV.true?('BARONG_REDIS_CLUSTER')
+  if env_true?('BARONG_REDIS_CLUSTER')
     config.cache_store = :redis_cache_store, { driver: :hiredis, cluster: [ENV.fetch('BARONG_REDIS_URL')], password: ENV.fetch('BARONG_REDIS_PASSWORD') }
   else
     config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV.fetch('BARONG_REDIS_URL', 'redis://localhost:6379/1') }
@@ -69,7 +65,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "barong_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "barong_production"
 
   config.action_mailer.perform_caching = false
 
@@ -81,11 +77,11 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  # Don't log any deprecations.
+  config.active_support.report_deprecations = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = JSONLogFormatter.new
+  config.log_formatter = Barong::JsonLogFormatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'

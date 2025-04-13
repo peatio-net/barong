@@ -40,8 +40,8 @@ class AuthorizeController < ActionController::Metal
   # finds first (if exist) the most precise restriction ip -> ip_subnet -> continent -> country
   def first_matched_restriction(category)
     request_ip = remote_ip
-    country = Barong::GeoIP.info(ip: request_ip, key: :country)
-    continent = Barong::GeoIP.info(ip: request_ip, key: :continent)
+    country = Barong::GeoIp.info(ip: request_ip, key: :country)
+    continent = Barong::GeoIp.info(ip: request_ip, key: :continent)
     if restriction = @restrictions[category]['all']&.find { |r| r.present? }                                    then return restriction end
     if restriction = @restrictions[category]['ip']&.find { |r| r.include?(request_ip) }                         then return restriction end
     if restriction = @restrictions[category]['ip_subnet']&.find { |r| IPAddr.new(r[0])&.include?(request_ip) }  then return restriction end

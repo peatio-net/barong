@@ -2,11 +2,11 @@
 
 require_dependency 'barong/jwt'
 
-describe Barong::JWT do
+describe Barong::Jwt do
   let(:key) { OpenSSL::PKey::RSA.generate(2048) }
 
   it 'should encode payload with claims' do
-    codec = Barong::JWT.new(key: key)
+    codec = Barong::Jwt.new(key: key)
     token = codec.encode({hello: 'world'})
 
     decoded = ::JWT.decode(token, key.public_key,

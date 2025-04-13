@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'KYC::ApplicantWorker' do
+describe 'Kyc::ApplicantWorker' do
   include_context 'bearer authentication'
   before { allow(Barong::App.config).to receive_messages(kyc_provider: 'kycaid') }
 
@@ -22,7 +22,7 @@ describe 'KYC::ApplicantWorker' do
         expect(profile.applicant_id).to eq(nil)
         expect(KYCAID::Applicant).to receive(:create)
 
-        KYC::Kycaid::ApplicantWorker.new.perform(profile.id)
+        Kyc::Kycaid::ApplicantWorker.new.perform(profile.id)
         expect(profile.reload.applicant_id).not_to eq(nil)
       end
 
@@ -33,7 +33,7 @@ describe 'KYC::ApplicantWorker' do
         expect(profile.user.labels.first.value).to eq('submitted')
 
         expect(KYCAID::Applicant).to receive(:create)
-        KYC::Kycaid::ApplicantWorker.new.perform(profile.id)
+        Kyc::Kycaid::ApplicantWorker.new.perform(profile.id)
 
         expect(profile.reload.applicant_id).not_to eq(nil)
         expect(profile.user.labels.count).to eq(1)
@@ -59,7 +59,7 @@ describe 'KYC::ApplicantWorker' do
         expect(profile.applicant_id).to eq(nil)
         expect(KYCAID::Applicant).to receive(:create)
 
-        KYC::Kycaid::ApplicantWorker.new.perform(profile.id)
+        Kyc::Kycaid::ApplicantWorker.new.perform(profile.id)
         expect(profile.reload.applicant_id).to eq(nil)
       end
     end
@@ -71,7 +71,7 @@ describe 'KYC::ApplicantWorker' do
         expect(profile.applicant_id).to eq(nil)
         expect(KYCAID::Applicant).to receive(:create)
 
-        KYC::Kycaid::ApplicantWorker.new.perform(profile.id)
+        Kyc::Kycaid::ApplicantWorker.new.perform(profile.id)
         expect(profile.reload.applicant_id).to eq(nil)
       end
 
@@ -79,7 +79,7 @@ describe 'KYC::ApplicantWorker' do
         expect(profile.applicant_id).to eq(nil)
         expect(KYCAID::Applicant).to receive(:create)
 
-        KYC::Kycaid::ApplicantWorker.new.perform(profile.id)
+        Kyc::Kycaid::ApplicantWorker.new.perform(profile.id)
         expect(profile.reload.applicant_id).to eq(nil)
         expect(profile.user.labels.count).to eq(1)
         expect(profile.user.labels.first.key).to eq('profile')
