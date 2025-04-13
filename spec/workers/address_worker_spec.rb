@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'KYC::Kycaid::AddressWorker' do
+describe 'Kyc::Kycaid::AddressWorker' do
   before { allow(Barong::App.config).to receive_messages(kyc_provider: 'kycaid') }
 
   include_context 'bearer authentication'
@@ -21,7 +21,7 @@ describe 'KYC::Kycaid::AddressWorker' do
     before { allow(KYCAID::Address).to receive(:create).and_return(successful_docs_response) }
     before { allow(KYCAID::Verification).to receive(:create).and_return(successful_verification_response) }
 
-    before { allow_any_instance_of(KYC::Kycaid::AddressWorker).to receive(:address_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::AddressWorker).to receive(:address_params).and_return({}) }
 
     context 'perform' do
       before { allow(KYCAID::Address).to receive(:create).and_return(successful_docs_response) }
@@ -31,7 +31,7 @@ describe 'KYC::Kycaid::AddressWorker' do
         expect(document.metadata).to eq(nil)
         expect(KYCAID::Address).to receive(:create)
 
-        KYC::Kycaid::AddressWorker.new.perform(address_params)
+        Kyc::Kycaid::AddressWorker.new.perform(address_params)
         expect(document.reload.metadata).not_to eq(nil)
       end
 
@@ -40,14 +40,14 @@ describe 'KYC::Kycaid::AddressWorker' do
         expect(KYCAID::Address).to receive(:create)
         expect(KYCAID::Verification).to receive(:create)
 
-        KYC::Kycaid::AddressWorker.new.perform(address_params)
+        Kyc::Kycaid::AddressWorker.new.perform(address_params)
         expect(document.reload.metadata).not_to eq(nil)
       end
     end
   end
 
   describe 'failed verification' do
-    before { allow_any_instance_of(KYC::Kycaid::AddressWorker).to receive(:address_params).and_return({}) }
+    before { allow_any_instance_of(Kyc::Kycaid::AddressWorker).to receive(:address_params).and_return({}) }
     let(:unauthorized_response) { OpenStruct.new(error: { "type": 'unauthorized' }) }
     let(:unsuccessful_response) do
       OpenStruct.new(type: 'validation', errors: [{ "parameter": 'front_file', "message": 'Image is blured' }])
@@ -60,7 +60,7 @@ describe 'KYC::Kycaid::AddressWorker' do
         expect(KYCAID::Address).to receive(:create)
         expect(KYCAID::Verification).not_to receive(:create)
 
-        KYC::Kycaid::AddressWorker.new.perform(address_params)
+        Kyc::Kycaid::AddressWorker.new.perform(address_params)
         expect(document.reload.metadata).to eq(nil)
       end
     end
@@ -72,7 +72,7 @@ describe 'KYC::Kycaid::AddressWorker' do
         expect(document.metadata).to eq(nil)
         expect(KYCAID::Address).to receive(:create)
 
-        KYC::Kycaid::AddressWorker.new.perform(address_params)
+        Kyc::Kycaid::AddressWorker.new.perform(address_params)
         expect(document.metadata).to eq(nil)
       end
 
@@ -83,7 +83,7 @@ describe 'KYC::Kycaid::AddressWorker' do
 
         expect(KYCAID::Address).to receive(:create)
 
-        KYC::Kycaid::AddressWorker.new.perform(address_params)
+        Kyc::Kycaid::AddressWorker.new.perform(address_params)
         expect(document.metadata).to eq(nil)
         expect(document.user.labels.count).to eq(2)
         expect(document.user.labels.find_by(key: :address).value).to eq('rejected')
@@ -96,7 +96,7 @@ describe 'KYC::Kycaid::AddressWorker' do
       before { allow(Barong::App.config).to receive(:tls_enabled).and_return(false) }
 
       it 'use http' do
-        params = KYC::Kycaid::AddressWorker.new.verification_params
+        params = Kyc::Kycaid::AddressWorker.new.verification_params
         expect(params.fetch(:callback_url)).to eq('http://openware.com/api/v2/barong/public/kyc')
       end
     end
@@ -105,7 +105,7 @@ describe 'KYC::Kycaid::AddressWorker' do
       before { allow(Barong::App.config).to receive(:tls_enabled).and_return(true) }
 
       it 'use https' do
-        params = KYC::Kycaid::AddressWorker.new.verification_params
+        params = Kyc::Kycaid::AddressWorker.new.verification_params
         expect(params.fetch(:callback_url)).to eq('https://openware.com/api/v2/barong/public/kyc')
       end
     end

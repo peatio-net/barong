@@ -11,6 +11,11 @@
 # end
 
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections(:en) do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym 'API'
+  inflect.acronym 'TOTP'
+  inflect.acronym 'UID'
+  inflect.acronym 'RESTful'
+  inflect.acronym 'CORS'
+  inflect.acronym 'EventAPI'
+end

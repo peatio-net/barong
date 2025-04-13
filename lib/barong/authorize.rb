@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'barong/activity_logger'
 
 module Barong
   # AuthZ functionality
@@ -162,7 +161,7 @@ module Barong
         result: result,
         user_agent: @request.env['HTTP_USER_AGENT'],
         user_ip: remote_ip,
-        user_ip_country: Barong::GeoIP.info(ip: remote_ip, key: :country),
+        user_ip_country: Barong::GeoIp.info(ip: remote_ip, key: :country),
         path: @path,
         topic: topic,
         verb: @request.env['REQUEST_METHOD'],
@@ -183,7 +182,6 @@ module Barong
     def remote_ip
       # default behaviour, IP from HTTP_X_FORWARDED_FOR
       ip = @request.remote_ip
-
       if Barong::App.config.gateway == 'akamai'
         # custom header that contains only client IP
         true_client_ip = @request.env['HTTP_TRUE_CLIENT_IP']
@@ -198,7 +196,7 @@ module Barong
 
     # encode helper method
     def codec
-      @_codec ||= Barong::JWT.new(key: Barong::App.config.keystore.private_key)
+      @_codec ||= Barong::Jwt.new(key: Barong::App.config.keystore.private_key)
     end
 
     # fetch authz rules from yml

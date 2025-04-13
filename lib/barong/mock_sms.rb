@@ -2,7 +2,7 @@
 
 module Barong
   # empty sms service
-  class MockSMS
+  class MockSms
     cattr_accessor :messages
     self.messages = []
 

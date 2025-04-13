@@ -6,7 +6,7 @@ require 'active_support/lazy_load_hooks'
 # EventAPI provides interface to platform-wide notifications in RabbitMQ.
 #
 # Check docs/specs/event_api.md for more details.
-module EventAPI
+module Barong::EventAPI
   class << self
     def notify(event_name, event_payload)
       arguments = [event_name, event_payload]
@@ -45,7 +45,7 @@ module EventAPI
         tokens << partial_event_name.to_s
         full_event_name = tokens.join('.')
 
-        ::EventAPI.notify(full_event_name, event_payload)
+        Barong::EventAPI.notify(full_event_name, event_payload)
       end
 
       def notify_record_created

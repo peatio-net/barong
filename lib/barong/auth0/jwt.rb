@@ -2,7 +2,7 @@
 
 module Barong
   module Auth0
-    class JWT
+    class Jwt
       def self.verify(token)
         ::JWT.decode(token,
                      nil,

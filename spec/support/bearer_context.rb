@@ -6,7 +6,7 @@ shared_context 'bearer authentication' do
 
   let(:jwt_token) do
     pkey = Rails.application.config.x.keystore.private_key
-    codec = Barong::JWT.new(key: pkey)
+    codec = Barong::Jwt.new(key: pkey)
     codec.encode(test_user.as_payload)
   end
 

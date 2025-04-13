@@ -46,6 +46,7 @@ class Phone < ApplicationRecord
     end
 
     def find_by_number(number, attrs={})
+      number = self.sanitize(number)
       attrs.merge!(number_index: SaltedCrc32.generate_hash(number))
       Rails.logger.warn "attrs : #{attrs}"
       find_by(attrs)

@@ -1,7 +1,7 @@
 require 'yaml'
 require 'erb'
 require 'openssl'
-
+require_dependency Rails.root.join('app', 'api', 'api', 'v2', 'management', 'jwt_authentication_middleware')
 raw_file = File.read('config/management_api.yml')
 yaml = ERB.new(raw_file).result
 
@@ -29,5 +29,5 @@ yaml = ERB.new(raw_file).result
     end
   end
 
-  API::V2::Management::JWTAuthenticationMiddleware.security_configuration = x
+  API::V2::Management::JwtAuthenticationMiddleware.security_configuration = x
 end
