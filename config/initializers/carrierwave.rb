@@ -18,8 +18,8 @@ Barong::App.define do |config|
   config.set(:storage_pathstyle, 'false', type: :bool) # optional (AWS, AliCloud)
   # Carrierwave defaults configuration
   config.write(:uploader, UploadUploader)
-  config.set(:upload_size_min_range, '1', type: :integer) # in megabytes
-  config.set(:upload_size_max_range, '10', type: :integer) # in megabytes
+  config.set(:upload_size_min_range, '0.1', type: :float) # in megabytes
+  config.set(:upload_size_max_range, '10', type: :float) # in megabytes
   config.set(:upload_auth_url_expiration, '1', type: :integer) # in minutes
   config.set(:upload_extension_whitelist, 'jpg, jpeg, png, pdf', type: :array)
 end

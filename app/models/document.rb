@@ -14,6 +14,7 @@ class Document < ApplicationRecord
 
   belongs_to :user
 
+  before_validation :log_doc_type
   validates :doc_type, :upload, presence: true
   validates :doc_type, inclusion: { in: DocumentTypes.list }
   validates :doc_expire, presence: true, if: -> { Barong::App.config.required_docs_expire }
@@ -72,6 +73,10 @@ class Document < ApplicationRecord
     if doc_number.present?
       self.doc_number_index = SaltedCrc32.generate_hash(doc_number)
     end
+  end
+
+  def log_doc_type
+    Rails.logger.error "Attempting to upload document with type: #{doc_type}"
   end
 end
 

@@ -22,7 +22,7 @@ class UploadUploader < CarrierWave::Uploader::Base
 
   def size_range
     # default is 1..10.megabytes
-    Barong::App.config.upload_size_min_range..Barong::App.config.upload_size_max_range.megabytes
+    (Barong::App.config.upload_size_min_range.to_f.megabytes)..(Barong::App.config.upload_size_max_range.to_f.megabytes)
   end
 
   # Override default 'publicly visible' policy of fog
