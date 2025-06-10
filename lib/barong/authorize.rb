@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require 'barong/activity_logger'
 
 module Barong
@@ -151,9 +150,9 @@ module Barong
 
     def log_activity(user_id, result, topic = nil)
       if Rails.env.test?
-        ActivityLogger.sync_write(activity_params(user_id, result, topic))
+        Barong::ActivityLogger.sync_write(activity_params(user_id, result, topic))
       else
-        ActivityLogger.async_write(activity_params(user_id, result, topic))
+        Barong::ActivityLogger.async_write(activity_params(user_id, result, topic))
       end
     end
 

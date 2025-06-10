@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_dependency 'barong/authorize'
-
 # Rails Metal base controller to manage AuthZ story
 class AuthorizeController < ActionController::Metal
   include AbstractController::Rendering
