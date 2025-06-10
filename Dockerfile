@@ -11,6 +11,7 @@ ARG RAILS_ENV=production
 ARG UID=1000
 ARG GID=1000
 
+ARG MAXMINDDB_LICENSE_KEY=<get this from app.yml>
 ARG MAXMINDDB_LINK
 
 # Open Source license key provided by Openware has some download rate and amount limits
