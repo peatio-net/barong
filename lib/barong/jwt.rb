@@ -1,5 +1,5 @@
 module Barong
-  class JWT
+  class Jwt
 
     def initialize(options)
       raise "Missing private key" unless options[:key]

@@ -232,13 +232,13 @@ RSpec.describe Label, type: :model do
     let(:label) { create(:label, user_id: user.id) }
 
     before do
-      allow(EventAPI).to receive(:notify)
+      allow(Barong::EventAPI).to receive(:notify)
     end
 
     it 'receives event with label create' do
       label
 
-      expect(EventAPI).to have_received(:notify).with('model.label.created',
+      expect(Barong::EventAPI).to have_received(:notify).with('model.label.created',
                                                       hash_including(
                                                         record: hash_including(
                                                           id: label.id,

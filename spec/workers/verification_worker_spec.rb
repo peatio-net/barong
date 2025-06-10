@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'KYC::Kycaid::VerificationWorker' do
+describe 'Kyc::Kycaid::VerificationWorker' do
   before { allow(Barong::App.config).to receive_messages(kyc_provider: 'kycaid') }
 
   include_context 'bearer authentication'
@@ -24,7 +24,7 @@ describe 'KYC::Kycaid::VerificationWorker' do
 
         expect(KYCAID::Verification).to receive(:fetch)
 
-        KYC::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
+        Kyc::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
       end
 
       it 'changes label accordingly to verification' do
@@ -33,7 +33,7 @@ describe 'KYC::Kycaid::VerificationWorker' do
 
         expect(KYCAID::Verification).to receive(:fetch)
 
-        KYC::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
+        Kyc::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
 
         expect(user.labels.count).to eq(2)
         expect(user.labels.reload.find_by(key: :document, scope: :private).value).to eq('verified')
@@ -56,7 +56,7 @@ describe 'KYC::Kycaid::VerificationWorker' do
 
         expect(KYCAID::Verification).to receive(:fetch)
 
-        KYC::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
+        Kyc::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
         expect(user.labels.reload.find_by(key: :document, scope: :private).value).to eq('pending')
       end
     end
@@ -68,7 +68,7 @@ describe 'KYC::Kycaid::VerificationWorker' do
 
         expect(KYCAID::Verification).to receive(:fetch)
 
-        KYC::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
+        Kyc::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
       end
 
       it 'changes label accordingly to verification' do
@@ -77,7 +77,7 @@ describe 'KYC::Kycaid::VerificationWorker' do
 
         expect(KYCAID::Verification).to receive(:fetch)
 
-        KYC::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
+        Kyc::Kycaid::VerificationsWorker.new.perform({ applicant_id: profile.applicant_id, verification_id: '84e51f8a' })
 
         expect(user.labels.count).to eq(2)
         expect(user.labels.reload.find_by(key: :document, scope: :private).value).to eq('rejected')

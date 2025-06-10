@@ -12,7 +12,7 @@ class MockPhoneVerifyService
 
     def send_sms(number:, content:)
       from_phone = Barong::App.config.twilio_phone_number
-      client = Barong::MockSMS.new('', '')
+      client = Barong::MockSms.new('', '')
       client.messages.create(from: from_phone, to: '+' + number, body: content)
     end
 

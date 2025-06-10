@@ -6,7 +6,9 @@
 # 3/ if no generate display warning, raise error in production, and set
 
 require 'barong/app'
-require 'barong/keystore'
+require 'barong/key_store'
+require 'kycaid'
+require 'barong/geo_ip'
 
 private_key_env = ENV['JWT_PRIVATE_KEY']
 private_key_path = ENV['JWT_PRIVATE_KEY_PATH']
@@ -41,7 +43,7 @@ end
 kstore = Barong::KeyStore.new(pkey)
 
 # Define default value for secret_key_base in test and development mode
-ENV['SECRET_KEY_BASE'] = '' unless Rails.env.production?
+# ENV['SECRET_KEY_BASE'] = ' ' unless Rails.env.production?
 
 Barong::App.define do |config|
   # General configuration ---------------------------------------------
@@ -145,7 +147,6 @@ ActionMailer::Base.smtp_settings = {
   password: Barong::App.config.smtp_password
 }
 
-Barong::GeoIP.lang = Barong::App.config.geoip_lang
-
+Barong::GeoIp.lang = Barong::App.config.geoip_lang
 Rails.application.config.x.keystore = kstore
 Barong::App.config.keystore = kstore

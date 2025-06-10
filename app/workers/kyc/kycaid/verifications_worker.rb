@@ -1,5 +1,5 @@
 require 'sidekiq'
-module KYC
+module Kyc
   module Kycaid
     class VerificationsWorker
       include Sidekiq::Worker

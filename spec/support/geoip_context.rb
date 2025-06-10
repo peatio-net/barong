@@ -26,6 +26,6 @@ shared_context 'geoip mock' do
 
     reader = DummyReader.new
 
-    allow(Barong::GeoIP).to receive(:reader).and_return(reader)
+    allow(Barong::GeoIp).to receive(:reader).and_return(reader)
   end
 end

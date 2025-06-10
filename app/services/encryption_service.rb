@@ -47,13 +47,17 @@ class EncryptionService
     # Delete keys with expired date
     delete_expired_keys
 
-    unless @cache[salt]
+    unless @cache[salt].present?
       # Initialize hash for specific salt
       @cache[salt] = {}
-
+      secret_key_base = if Rails.env.production?
+                          ENV.fetch('SECRET_KEY_BASE')
+                        else
+                          Rails.application.credentials.secret_key_base
+                        end
       # Put key value from key generator
       @cache[salt]['key'] = ActiveSupport::KeyGenerator.new(
-        ENV.fetch('SECRET_KEY_BASE')
+       secret_key_base
       ).generate_key(salt, ActiveSupport::MessageEncryptor.key_len)
 
       # Put expire date for specific key

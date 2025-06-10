@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validate :role_exists
   validate :referral_exists
   validates :data, data_is_json: true
-  validates :email,       email: true, presence: true, uniqueness: true
+  validates :email,       email_format: true, presence: true, uniqueness: true
   validates :username,    length: { minimum: 4, maximum: 12 }, format: { with: /\A[a-zA-Z0-9]+\z/ }, uniqueness: true, allow_nil: true
   validates :uid,         presence: true, uniqueness: true
   validates :password,    presence: true, if: :should_validate?
