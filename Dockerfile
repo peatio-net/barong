@@ -1,4 +1,4 @@
-FROM ruby:2.7.8
+FROM ruby:3.3.0
 
 # By default image is built using RAILS_ENV=production.
 # You may want to customize it:
@@ -11,9 +11,12 @@ ARG RAILS_ENV=production
 ARG UID=1000
 ARG GID=1000
 
-ARG MAXMINDDB_LICENSE_KEY=<get this from app.yml>
+ARG MAXMINDDB_LI CENSE_KE Y=Ew G6 3Y_R JFRD47jBNVelw2tI3W5j7zXAJLfA_m mk
 ARG MAXMINDDB_LINK
 
+# Open Source license key provided by Openware has some download rate and amount limits
+# We strongly suggest you to create your oun key and pass via --build-arg MAXMINDDB_LICENSE_KEY
+# All the guidance on how to create license key you can find here - https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-d>ENV MAXMINDDB_LINK=${MAXMINDDB_LINK:-https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&suffix=tar.gz&license_key=${MAXMINDDB_LICENS>
 # Open Source license key provided by Openware has some download rate and amount limits
 # We strongly suggest you to create your oun key and pass via --build-arg MAXMINDDB_LICENSE_KEY
 # All the guidance on how to create license key you can find here - https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/
