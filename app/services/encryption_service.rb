@@ -34,6 +34,13 @@ class EncryptionService
     master_key = get_master_key(salt)
     # Decrypt encrypted value for attribute
     encryptor(master_key).decrypt_and_verify(encrypted_key)
+    rescue => e
+      Rails.logger.error "DEBUG - Error: #{e.class}: #{e.message}"
+      Rails.logger.error "DEBUG - Salt: #{salt}}"
+      Rails.logger.error "DEBUG - value: #{value}}"
+      Rails.logger.error "DEBUG - encrypted_key: #{encrypted_key}}"
+      Rails.logger.error "DEBUG - master_key: #{master_key}"
+      raise
   end
 
   private
