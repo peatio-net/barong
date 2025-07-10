@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 2.7.4'
+ruby '~> 3.0.0'
 
 gem 'aliyun-sdk',  '~> 0.7.0'
 gem 'api-pagination', '~> 4.8.2'
@@ -19,7 +19,7 @@ gem 'fog-aliyun', '~> 0.3.5'
 # aws support (amazon)
 gem 'fog-aws', '~> 3.24.0'
 # gcp support (google)
-gem 'fog-google', '~> 1.9.1'
+gem 'fog-google', '~> 1.20.0'
 gem 'kycaid'
 gem 'sidekiq', '>= 6.0.7'
 # GLI
@@ -96,7 +96,7 @@ end
 group :development do
   gem 'grape_on_rails_routes', '~> 0.3.2'
   gem 'web-console', '>= 3.7.0'
-  gem 'listen',       '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.2'
   gem 'annotate', '~> 2.7', '>= 2.7.5'
 end
 
