@@ -1,565 +1,107 @@
-GIT
-  remote: https://github.com/rubykube/vault-rails
-  revision: b5e6570d1268fe0153b72200bbc58c5254d6c848
-  specs:
-    vault-rails (0.6.0)
-      rails (>= 4.1)
-      vault (~> 0.14)
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-GEM
-  remote: https://rubygems.org/
-  specs:
-    actioncable (5.2.6)
-      actionpack (= 5.2.6)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-    actionmailer (5.2.6)
-      actionpack (= 5.2.6)
-      actionview (= 5.2.6)
-      activejob (= 5.2.6)
-      mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 2.0)
-    actionpack (5.2.6)
-      actionview (= 5.2.6)
-      activesupport (= 5.2.6)
-      rack (~> 2.0, >= 2.0.8)
-      rack-test (>= 0.6.3)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.6)
-      activesupport (= 5.2.6)
-      builder (~> 3.1)
-      erubi (~> 1.4)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.2.6)
-      activesupport (= 5.2.6)
-      globalid (>= 0.3.6)
-    activemodel (5.2.6)
-      activesupport (= 5.2.6)
-    activerecord (5.2.6)
-      activemodel (= 5.2.6)
-      activesupport (= 5.2.6)
-      arel (>= 9.0)
-    activestorage (5.2.6)
-      actionpack (= 5.2.6)
-      activerecord (= 5.2.6)
-      marcel (~> 1.0.0)
-    activesupport (5.2.6)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
-    aliyun-sdk (0.7.3)
-      nokogiri (~> 1.6)
-      rest-client (~> 2.0)
-    amq-protocol (2.3.2)
-    amqp (1.8.0)
-      amq-protocol (>= 2.2.0)
-      eventmachine
-    annotate (2.7.5)
-      activerecord (>= 3.2, < 7.0)
-      rake (>= 10.4, < 13.0)
-    api-pagination (4.8.2)
-    arel (9.0.0)
-    aws-eventstream (1.1.0)
-    aws-sigv4 (1.2.2)
-      aws-eventstream (~> 1, >= 1.0.2)
-    base58 (0.2.3)
-    bcrypt (3.1.15)
-    bindex (0.8.1)
-    blake2b (0.10.0)
-    bootsnap (1.4.7)
-      msgpack (~> 1.0)
-    browser (4.2.0)
-    builder (3.2.4)
-    bump (0.9.0)
-    bunny (2.15.0)
-      amq-protocol (~> 2.3, >= 2.3.1)
-    byebug (11.1.3)
-    cancancan (2.3.0)
-    capybara (3.33.0)
-      addressable
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (~> 1.5)
-      xpath (~> 3.2)
-    carrierwave (2.2.2)
-      activemodel (>= 5.0.0)
-      activesupport (>= 5.0.0)
-      addressable (~> 2.6)
-      image_processing (~> 1.1)
-      marcel (~> 1.0.0)
-      mini_mime (>= 0.1.3)
-      ssrf_filter (~> 1.0)
-    clamp (1.3.1)
-    coderay (1.1.3)
-    concurrent-ruby (1.1.9)
-    connection_pool (2.2.5)
-    countries (3.0.1)
-      i18n_data (~> 0.10.0)
-      sixarm_ruby_unaccent (~> 1.1)
-      unicode_utils (~> 1.4)
-    crass (1.0.6)
-    database_cleaner (2.0.1)
-      database_cleaner-active_record (~> 2.0.0)
-    database_cleaner-active_record (2.0.0)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0.0)
-    database_cleaner-core (2.0.1)
-    declarative (0.0.20)
-    diff-lcs (1.4.4)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
-    dry-configurable (0.11.6)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 0.4, >= 0.4.7)
-      dry-equalizer (~> 0.2)
-    dry-container (0.7.2)
-      concurrent-ruby (~> 1.0)
-      dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.9)
-      concurrent-ruby (~> 1.0)
-    dry-equalizer (0.3.0)
-    dry-inflector (0.2.0)
-    dry-logic (1.0.6)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 0.2)
-      dry-equalizer (~> 0.2)
-    dry-types (1.4.0)
-      concurrent-ruby (~> 1.0)
-      dry-container (~> 0.3)
-      dry-core (~> 0.4, >= 0.4.4)
-      dry-equalizer (~> 0.3)
-      dry-inflector (~> 0.1, >= 0.1.2)
-      dry-logic (~> 1.0, >= 1.0.2)
-    ed25519 (1.2.4)
-    em-websocket (0.5.1)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
-    email_validator (1.6.0)
-      activemodel
-    env-tweaks (1.0.0)
-      activesupport (>= 3.0, < 6.0)
-    erubi (1.9.0)
-    eventmachine (1.2.7)
-    excon (0.76.0)
-    execjs (2.7.0)
-    factory_bot (4.11.1)
-      activesupport (>= 3.0.0)
-    factory_bot_rails (4.11.1)
-      factory_bot (~> 4.11.1)
-      railties (>= 3.0.0)
-    faker (2.13.0)
-      i18n (>= 1.6, < 2)
-    faraday (0.17.4)
-      multipart-post (>= 1.2, < 3)
-    ffi (1.15.4)
-    fog-aliyun (0.3.18)
-      aliyun-sdk (~> 0.7.3)
-      fog-core
-      fog-json
-      ipaddress (~> 0.8)
-      xml-simple (~> 1.1)
-    fog-aws (3.24.0)
-      fog-core (~> 2.1)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
-    fog-core (2.1.0)
-      builder
-      excon (~> 0.58)
-      formatador (~> 0.2)
-      mime-types
-    fog-google (1.20.0)
-      fog-core (< 2.3)
-      fog-json (~> 1.2)
-      fog-xml (~> 0.1.0)
-      google-apis-compute_v1 (~> 0.53)
-      google-apis-dns_v1 (~> 0.28)
-      google-apis-iamcredentials_v1 (~> 0.15)
-      google-apis-monitoring_v3 (~> 0.37)
-      google-apis-pubsub_v1 (~> 0.30)
-      google-apis-sqladmin_v1beta4 (~> 0.38)
-      google-apis-storage_v1 (~> 0.20)
-      google-cloud-env (~> 1.2)
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
-    fog-xml (0.1.3)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
-    formatador (0.2.5)
-    gli (2.19.2)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
-    google-apis-compute_v1 (0.86.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-core (0.11.3)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (>= 0.16.2, < 2.a)
-      httpclient (>= 2.8.1, < 3.a)
-      mini_mime (~> 1.0)
-      representable (~> 3.0)
-      retriable (>= 2.0, < 4.a)
-      rexml
-    google-apis-dns_v1 (0.36.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-iamcredentials_v1 (0.17.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-monitoring_v3 (0.54.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-pubsub_v1 (0.45.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-sqladmin_v1beta4 (0.61.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-apis-storage_v1 (0.32.0)
-      google-apis-core (>= 0.11.0, < 2.a)
-    google-cloud-env (1.6.0)
-      faraday (>= 0.17.3, < 3.0)
-    googleauth (1.8.1)
-      faraday (>= 0.17.3, < 3.a)
-      jwt (>= 1.4, < 3.0)
-      multi_json (~> 1.11)
-      os (>= 0.9, < 2.0)
-      signet (>= 0.16, < 2.a)
-    grape (1.4.0)
-      activesupport
-      builder
-      dry-types (>= 1.1)
-      mustermann-grape (~> 1.0.0)
-      rack (>= 1.3.0)
-      rack-accept
-    grape-entity (0.8.1)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.3.2)
-    grape-swagger (1.2.1)
-      grape (~> 1.3)
-    grape-swagger-entity (0.5.1)
-      grape-entity (>= 0.6.0)
-      grape-swagger (>= 1.2.0)
-    grape_logging (1.8.3)
-      grape
-      rack
-    grape_on_rails_routes (0.3.2)
-      rails (>= 3.1.1)
-    hiredis (0.6.3)
-    http-accept (1.7.0)
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
-    http_parser.rb (0.6.0)
-    httpclient (2.9.0)
-      mutex_m
-    i18n (1.8.10)
-      concurrent-ruby (~> 1.0)
-    i18n_data (0.10.0)
-    image_processing (1.12.1)
-      mini_magick (>= 4.9.5, < 5)
-      ruby-vips (>= 2.0.17, < 3)
-    ipaddress (0.8.3)
-    json (2.5.1)
-    jwt (2.2.2)
-    jwt-multisig (1.0.4)
-      activesupport (>= 4.0)
-      jwt (~> 2.2)
-    kaminari (1.2.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
-      actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
-      activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
-    kycaid (1.0.2)
-      faraday
-      json
-    libv8 (8.4.255.0)
-    listen (3.9.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.7.0)
-      crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
-    mail (2.7.1)
-      mini_mime (>= 0.1.1)
-    marcel (1.0.1)
-    maxmind-db (1.1.1)
-    memoist (0.16.2)
-    method_source (1.0.0)
-    mime-types (3.3.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
-    mini_magick (4.11.0)
-    mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
-    mini_racer (0.6.4)
-      libv8-node (~> 16.19.0.0)
-    minitest (5.14.4)
-    msgpack (1.3.3)
-    multi_json (1.15.0)
-    multipart-post (2.1.1)
-    mustermann (1.1.1)
-      ruby2_keywords (~> 0.0.1)
-    mustermann-grape (1.0.1)
-      mustermann (>= 1.0.0)
-    mutex_m (0.3.0)
-    mysql2 (0.5.3)
-    netrc (0.11.0)
-    nio4r (2.5.8)
-    nokogiri (1.15.3)
-      racc (~> 1.4)
-    os (1.1.4)
-    peatio (0.4.5)
-      amqp
-      bunny
-      clamp
-      em-websocket
-      eventmachine
-      jwt
-      mysql2
+ruby '~> 3.3.5'
 
+# Core Rails and server - INCREMENTAL UPGRADE PATH
+# Phase 1: Start with Rails 6.1 (intermediate step)
+gem 'rails', '~> 6.1.0'  # Will upgrade to 7.0 in next phase
+gem 'puma', '~> 5.0'     # Intermediate version, will go to 6.0+ later
+gem 'bootsnap', '~> 1.12.0', require: false  # Intermediate version
 
-3.1.0 February 22, 2023 (28 KB)
-2.6.5 August 18, 2021 (28 KB)
-2.6.4 May 31, 2021 (28 KB)
-2.6.3 March 02, 2021 (27.5 KB)
-Show all versions (30 total)
-Runtime Dependencies (13):
-activemodel > 5.2
+# Database - Updated for Ruby 3.3.5 compatibility
+gem 'mysql2', '~> 0.5.4'  # Updated from 0.5.3
+gem 'pg', '~> 1.4'        # Updated from 1.2
 
-em-synchrony ~> 1.0
-em-websocket >= 0
-eventmachine >= 0
-faraday ~> 1.10
+# Redis and caching - Updated for Ruby 3.3.5
+gem 'redis', '~> 4.8'     # Intermediate version (will go to 5.0+ later)
+gem 'hiredis', '~> 0.6.1'
 
-faye ~> 1.2
-jwt >= 0
-mysql2 >= 0
-prometheus-client >= 0
-thin >= 0
-Development Depe
+# Background jobs - Updated for better Ruby 3.3.5 support
+gem 'sidekiq', '~> 6.5'   # Intermediate version (will go to 7.0+ later)
 
-    pg (1.2.3)
-    phonelib (0.10.3)
-    pry (0.13.1)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-byebug (3.9.0)
-      byebug (~> 11.0)
-      pry (~> 0.13.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
-    public_suffix (4.0.6)
-    puma (4.3.10)
-      nio4r (~> 2.0)
-    racc (1.6.0)
-    rack (2.2.3)
-    rack-accept (0.4.5)
-      rack (>= 0.4)
-    rack-attack (6.5.0)
-      rack (>= 1.0, < 3)
-    rack-cors (1.0.6)
-      rack (>= 1.6.0)
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
-    rails (7.1.4.2)
-      actioncable (= 7.1.4.2)
-      actionmailbox (= 7.1.4.2)
-      actionmailer (= 7.1.4.2)
-      actionpack (= 7.1.4.2)
-      actiontext (= 7.1.4.2)
-      actionview (= 7.1.4.2)
-      activejob (= 7.1.4.2)
-      activemodel (= 7.1.4.2)
-      activerecord (= 7.1.4.2)
-      activestorage (= 7.1.4.2)
-      activesupport (= 7.1.4.2)
-      bundler (>= 1.15.0)
-      railties (= 7.1.4.2)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
-    rails-dom-testing (2.0.3)
-      activesupport (>= 4.2.0)
-      nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
-      loofah (~> 2.3)
-    railties (5.2.6)
-      actionpack (= 5.2.6)
-      activesupport (= 5.2.6)
-      method_source
-      rake (>= 0.8.7)
-      thor (>= 0.19.0, < 2.0)
-    rake (12.3.3)
-    rb-fsevent (0.11.2)
-    rb-inotify (0.11.1)
-      ffi (~> 1.0)
-    recaptcha (5.5.0)
-      json
-    redis (4.5.1)
-    regexp_parser (1.7.1)
-    representable (3.2.0)
-      declarative (< 0.1.0)
-      trailblazer-option (>= 0.1.1, < 0.2.0)
-      uber (< 0.2.0)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
-    retriable (3.1.2)
-    rexml (3.4.1)
-    rspec-core (3.9.2)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-rails (3.9.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.3)
-    ruby-vips (2.1.3)
-      ffi (~> 1.12)
-    ruby2_keywords (0.0.2)
-    sentry-raven (2.9.0)
-      faraday (>= 0.7.6, < 1.0)
-    shoulda-matchers (4.0.1)
-      activesupport (>= 4.2.0)
-    sidekiq (6.2.2)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
-    signet (0.16.0)
-      addressable (~> 2.8)
-      faraday (>= 0.17.3, < 2.0)
-      jwt (>= 1.5, < 3.0)
-      multi_json (~> 1.10)
-    sixarm_ruby_unaccent (1.2.0)
-    sprockets (4.0.2)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
-    sprockets-rails (3.2.2)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (>= 3.0.0)
-    ssrf_filter (1.0.7)
-    strong_password (0.0.9)
-    thor (1.0.1)
-    thread_safe (0.3.6)
-    trailblazer-option (0.1.2)
-    twilio-ruby (5.25.4)
-      faraday (~> 0.9)
-      jwt (>= 1.5, <= 2.5)
-      nokogiri (>= 1.6, < 2.0)
-    tzinfo (1.2.9)
-      thread_safe (~> 0.1)
-    uber (0.1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.7)
-    unicode_utils (1.4.0)
-    vault (0.15.0)
-      aws-sigv4
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
-      bindex (>= 0.4.0)
-      railties (>= 5.0)
-    websocket-driver (0.7.4)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.5)
-    xml-simple (1.1.5)
-    xpath (3.2.0)
-      nokogiri (~> 1.8)
+# API framework - Updated for Ruby 3.3.5
+gem 'grape', '~> 1.7'           # Intermediate version (will go to 2.0+ later)
+gem 'grape-entity', '~> 0.10'   # Updated from 0.8
+gem 'grape-swagger', '~> 1.6'   # Updated from 1.2
+gem 'grape-swagger-entity', '~> 0.5'
+gem 'grape_logging', '~> 1.8'
+gem 'api-pagination', '~> 5.0'  # Updated from 4.8.2
 
-PLATFORMS
-  ruby
+# Authentication and security - CRITICAL UPDATES
+gem 'bcrypt', '~> 3.1.18'       # Updated from 3.1.15
+gem 'jwt', '~> 2.7'             # Updated from 2.2
+gem 'jwt-multisig', '~> 1.0', '>= 1.0.4'
+gem 'cancancan', '~> 3.4'       # Updated from 2.3.0
 
-DEPENDENCIES
-  aliyun-sdk (~> 0.7.0)
-  annotate (~> 2.7, >= 2.7.5)
-  api-pagination (~> 4.8.2)
-  base58 (~> 0.2.3)
-  bcrypt (~> 3.1)
-  blake2b (~> 0.10.0)
-  bootsnap (>= 1.1.0)
-  browser
-  bump
-  bunny
-  cancancan (~> 2.3.0)
-  capybara (>= 3.29.0)
-  carrierwave (~> 2.1, >= 2.1.0)
-  countries
-  database_cleaner (~> 2.0.1)
-  ed25519 (~> 1.2.4)
-  email_validator (= 1.6.0)
-  env-tweaks (~> 1.0.0)
-  factory_bot_rails (~> 4.11, >= 4.11.1)
-  faker (~> 2.1)
-  fog-aliyun (~> 0.3.5)
-  fog-aws (~> 3.24.0)
-  fog-core (~> 2.1.0)
-  fog-google (~> 1.20.0)
-  gli (~> 2.19.0)
-  grape (~> 1.4)
-  grape-entity (~> 0.8)
-  grape-swagger (~> 1.2)
-  grape-swagger-entity (~> 0.5)
-  grape_logging (~> 1.8)
-  grape_on_rails_routes (~> 0.3.2)
-  hiredis (~> 0.6.1)
-  jwt (~> 2.2)
-  jwt-multisig (~> 1.0, >= 1.0.4)
-  kaminari (>= 1.2.1)
-  kycaid
-  listen (>= 3.2)
-  maxmind-db (~> 1.0)
-  memoist (~> 0.16)
-  mini_racer
-  mysql2 (>= 0.4.4, < 0.6.0)
-  peatio (~> 0.4.4)
-  pg (~> 1.2)
-  phonelib (~> 0.10.3)
-  pry-byebug
-  pry-rails
-  puma (~> 4.3.8)
-  rack-attack (>= 6.5.0)
-  rack-cors (~> 1.0.2)
-  rails (~> 5.2.4, >= 5.2.4.4)
-  rails-controller-testing (>= 1.0.5)
-  recaptcha (>= 5.2.1)
-  redis (~> 4.0)
-  rspec-rails (~> 3.9, >= 3.9.1)
-  sentry-raven (~> 2.9.0)
-  shoulda-matchers (~> 4.0.1.0)
-  sidekiq (>= 6.0.7)
-  strong_password (~> 0.0.8)
-  twilio-ruby (~> 5.25.4)
-  uglifier (>= 1.3.0)
-  vault (~> 0.1)
-  vault-rails!
-  web-console (>= 3.7.0)
+# Validation and verification - SECURITY UPDATES
+gem 'email_validator', '~> 2.2'  # Updated from locked 1.6.0
+gem 'recaptcha', '~> 5.12'       # Updated from 5.2.1
+gem 'strong_password', '~> 0.0.10'  # Updated from 0.0.8
+gem 'phonelib', '~> 0.8'         # Updated from 0.10.3
 
-RUBY VERSION
-   ruby 3.3.5
+# Cloud storage - Updated for Ruby 3.3.5
+gem 'carrierwave', '~> 2.2'      # Updated from 2.1
+gem 'fog-core', '~> 2.3'         # Updated from 2.1.0
+gem 'fog-aliyun', '~> 0.4'       # Updated from 0.3.5
+gem 'fog-aws', '~> 3.25'         # Updated from 3.24.0
+gem 'fog-google', '~> 1.22'      # Updated from 1.20.0
 
-BUNDLED WITH
-   2.6.9
+# External services - Updated versions
+gem 'aliyun-sdk', '~> 0.8'       # Updated from 0.7.0
+gem 'twilio-ruby', '~> 5.73'     # Updated from 5.25.4
+gem 'kycaid'
+gem 'vault', '~> 0.17'           # Updated from 0.1
+gem 'vault-rails', git: 'https://github.com/rubykube/vault-rails'
+
+# Messaging - Added version constraint
+gem 'bunny', '~> 2.20'           # Updated from 2.15.0
+
+# Cryptography - Updated for Ruby 3.3.5
+gem 'base58', '~> 0.2.3'
+gem 'blake2b', '~> 0.10.0'
+gem 'ed25519', '~> 1.3'          # Updated from 1.2.4
+
+# Utilities - Updated versions
+gem 'env-tweaks', '~> 1.0.0'
+gem 'kaminari', '~> 1.2'
+gem 'peatio', '~> 0.4.4'
+gem 'rack-cors', '~> 1.1'        # Updated from 1.0.2
+gem 'rack-attack', '~> 6.6'      # Updated from 6.5.0
+gem 'memoist', '~> 0.16'
+gem 'maxmind-db', '~> 1.2'       # Updated from 1.0
+gem 'countries', '~> 5.0', require: 'countries/global'
+gem 'browser', '~> 5.0', require: "browser/browser"
+gem 'bump', '~> 0.10'
+
+# Asset pipeline - Updated for Ruby 3.3.5
+gem 'uglifier', '~> 4.2'         # Updated from 1.3.0
+gem 'mini_racer', '~> 0.6', platforms: :ruby
+
+# Monitoring and logging - CRITICAL: Replace deprecated sentry-raven
+gem 'sentry-ruby', '~> 5.15'     # REPLACES sentry-raven
+gem 'sentry-rails', '~> 5.15'    # NEW: Rails integration
+
+# Development tools
+gem 'pry-rails', '~> 0.3'
+
+group :development, :test do
+  gem 'pry-byebug', '~> 3.10', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'  # Updated from 4.11
+  gem 'faker', '~> 3.0'              # Updated from 2.1
+  gem 'rspec-rails', '~> 5.0'        # Updated from 3.9 (intermediate)
+end
+
+group :development do
+  gem 'grape_on_rails_routes', '~> 0.3.2'
+  gem 'web-console', '~> 4.2'        # Updated from 3.7.0
+  gem 'listen', '~> 3.8'             # Updated from 3.2
+  gem 'annotate', '~> 3.2'           # Updated from 2.7
+end
+
+group :test do
+  gem 'capybara', '~> 3.38'                    # Updated from 3.29.0
+  gem 'shoulda-matchers', '~> 5.0'             # Updated from 4.0.1.0
+  gem 'rails-controller-testing', '~> 1.0.5'
+  gem 'database_cleaner-active_record', '~> 2.1'  # Updated from database_cleaner
+end
